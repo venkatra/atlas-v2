@@ -96,4 +96,27 @@ Type definition
   * Python script
   * Storm topology
 
+## REST endpoint
+To interact with the Atlas REST V2 endpoint, I am going to be using curl. Here is  a below sample interaction which is used to get the entire type definitions in Atlas
+```
+ATLAS_BASE_URL=https://myatlas-server:21443/api/atlas/v2
 
+curl -negotiate -u venkat -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' "$ATLAS_BASE_URL/types/typedefs"
+```
+*NOTE : my atlas was kerberos protected; hence the negotiate flag was used.*
+
+I am defining multiple definitions on a single request; for this I am using the bulk api. For submitting types/definitions in bulk; we wrap various definition inside an array element. For example, to define multiple entities at the same time
+
+```
+{
+ “entityDefs” : [ …
+ 
+  ]
+}
+```
+### Type definition : node
+In our solution, we want to represent a server where files will be uploaded by the source system. The server is also the machine where our python script would execute. Out-of-the-box, Atlas does not have a type definition representing a server. Hence we are defining the type entity for server.
+
+I would also like to classify these servers for various context ex: landing zone, worker nodes etc. The server being an infrastructure component inherits from the “infrastructure” type. Inheritance is defined for the key “superTypes”.
+
+The request json is stored in the file [typedef-node.json](https://github.com/venkatra/atlas-v2/blob/master/typedef-node.json)
