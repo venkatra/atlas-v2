@@ -1,3 +1,5 @@
+# WORK IN PROGRESS
+
 # Apache Atlas v2 Rest API
 
 Data governance is an important paradigm especially for the department which handles data. A data governance helps answer questions like:
@@ -36,7 +38,7 @@ A source system (news site scraper) uploads a csv data file to your landing zone
 
 ![Image of Flow](https://github.com/venkatra/atlas-v2/blob/master/image_1.jpg)
 
-In this example, it’s assumed that atlas hook for storm, Hbase is not configured. I am not going to show actual code of these artifacts (python script, storm code etc..); I am demonstrating what you would need to do define these into Atlas.
+In the example, it’s assumed that atlas hook for storm, Hbase is not configured. I am not going to show actual code of these artifacts (python script, storm code etc..); I am demonstrating what you would need to do define these into Atlas.
 
 ## Basics
 For the purpose of this write up I am using the rest v2 endpoints.The documentation for rest API endpoint is at: Apache REST API v2
@@ -44,7 +46,6 @@ For the purpose of this write up I am using the rest v2 endpoints.The documentat
 From the apache doc: A ‘Type’ in Atlas is a definition of how a particular type of metadata objects are stored and accessed. A type represents one or a collection of attributes that define the properties for the metadata object. 
 
 From a developers view; a type is analogous to a class definition. Example
-
 
 Type : Kafka_topic |
 ------------------ |
@@ -54,7 +55,6 @@ Topic name |
 Topic configuration |
 Key schema |
 Value schema |
-
 
 Type : Data_File |
 ------------------ |
@@ -67,19 +67,33 @@ Data schema |
 
 An entity is an instance of a Type, analogy is object from the oops world.
 
-Type : Kafka_topic : new_topic |------------------------------ |
------------------------------- |------------------------------ |
-Attributes: | |
+Type : Kafka_topic : new_topic
+
+Attributes | |
+----------- | |
 Broker | analytics_topics_broker |
 Topic name | news_topic |
 Topic configuration |
-Key schema | Id , String
-Value schema | Id ,String
-Url | String
-Headline | String
+Key schema | Id , String |
+Value schema | Id ,String |
+Url | String |
+Headline | String |
 
+Refer to the above concepts ![TypeSystem doc]https://atlas.apache.org/0.8.0-incubating/TypeSystem.html
 
-Refer to the above concepts in the doc : ![Image of Flow](TypeSystem doc)
+## Interacting with Atlas
+For the solutions that we are defining in atlas; we are going to be defining the following:
+Type definition 
+- Node:
+  * File
+  * Python script
+  * Kafka topic with schema definition
+- Entities:
+  * DataFile
+  * Kafka topic
+  * Hbase table
+- Process:
+  * Python script
+  * Storm topology
 
-https://atlas.apache.org/0.8.0-incubating/TypeSystem.html
 
