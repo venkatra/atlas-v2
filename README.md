@@ -79,7 +79,7 @@ Value schema | Id ,String |
 Url | String |
 Headline | String |
 
-Refer to the above concepts ![TypeSystem doc]https://atlas.apache.org/0.8.0-incubating/TypeSystem.html
+Refer to the above concepts ![TypeSystem doc](https://atlas.apache.org/0.8.0-incubating/TypeSystem.html)
 
 ## Interacting with Atlas
 For the solutions that we are defining in atlas; we are going to be defining the following:
@@ -119,4 +119,11 @@ In our solution, we want to represent a server where files will be uploaded by t
 
 I would also like to classify these servers for various context ex: landing zone, worker nodes etc. The server being an infrastructure component inherits from the “infrastructure” type. Inheritance is defined for the key “superTypes”.
 
-The request json is stored in the file [typedef-node.json](https://github.com/venkatra/atlas-v2/blob/master/typedef-node.json)
+The request json is stored in the file [typedef-node.json](https://github.com/venkatra/atlas-v2/blob/master/typedef-node.json). We invoke the REST endpoint as below:
+```
+curl -negotiate -u venkat -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' "$ATLAS_BASE_URL/types/typedefs" -d "@./typedef-node.json”
+```
+On successful response; you could query the type definition response and you can see the definition in the response as shown below:
+
+![Response Image](https://github.com/venkatra/atlas-v2/blob/master/img002.png) 
+![Response Image](https://github.com/venkatra/atlas-v2/blob/master/img003.png)
