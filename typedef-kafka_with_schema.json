@@ -1,0 +1,72 @@
+{
+  "entityDefs" : [
+    {
+      "superTypes" : [ "DataSet" ],
+      "category": "ENTITY",
+      "name": "kafka_value_message_schema",
+      "description": "schema for kafka value message, simple non-nested",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name": "col",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "data_type",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "required",
+          "typeName": "boolean",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false
+        }
+      ]
+    },
+    {
+      "superTypes" : [ "kafka_topic" ],
+      "category" : "ENTITY",
+      "name" : "kafka_topic_and_schema",
+      "description" : "a type definition for a kafka topic with message schema definition",
+      "typeVersion" : "1.0",
+      "attributeDefs" : [
+        {
+          "name" : "key_schema",
+          "typeName" : "array<kafka_value_message_schema>",
+          "isOptional" : true,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        },
+        {
+          "name" : "value_schema",
+          "typeName" : "array<kafka_value_message_schema>",
+          "isOptional" : true,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+      ]
+    }
+  ]
+}

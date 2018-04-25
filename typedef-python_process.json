@@ -1,0 +1,43 @@
+{
+  "entityDefs" : [
+    {
+      "superTypes" : [ "Process" ],
+      "category" : "ENTITY",
+      "name" : "python_script",
+      "description" : "a type definition for python script",
+      "typeVersion" : "1.0",
+      "attributeDefs" : [
+        {
+          "name" : "configuration_file",
+          "typeName" : "string",
+          "isOptional" : true,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+      ,{
+          "name" : "server",
+          "typeName" : "server",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : true,
+          "isIndexable" : true
+        }
+      ,{
+          "name" : "run_user",
+          "typeName" : "string",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : true,
+          "isIndexable" : true
+        }
+      ]
+    }
+  ]
+}

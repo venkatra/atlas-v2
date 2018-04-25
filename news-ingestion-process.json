@@ -1,0 +1,112 @@
+{
+  "entities": [
+    {
+      "typeName": "python_script",
+      "createdBy": "ingestors_news",
+      "attributes": {
+        "qualifiedName": "news_from_reuters:to:news_topic",
+        "uri": "news_from_reuters:to:news_topic",
+        "name": "news_from_reuters:to:news_topic",
+        "description": "ingests reuters news into kafka topic",
+        "run_user":"ingestor_user_news",
+        "server":{
+          "guid": -100,"typeName": "server"
+        },
+        "inputs": [
+          {
+            "guid": "6a9156d1-71ae-4d52-9569-20d28fb8eb7a",
+            "typeName": "DataFile"
+          }
+        ],
+        "outputs": [
+          {
+            "guid": "-400","typeName": "kafka_topic_and_schema"
+          }
+        ]
+      }
+    },
+
+    {
+      "typeName": "storm_topology",
+      "createdBy": "ingestors",
+      "attributes": {
+        "qualifiedName": "news_topic:to:news_from_reuters.z",
+        "uri": "news_topic:to:news_from_reuters.z",
+        "name": "news_topic:to:news_from_reuters.z",
+        "id": "news_topic:to:news_from_reuters.z",
+        "owner": "ingestors",
+        "nodes": [
+          {
+            "guid": -200,
+            "typeName": "storm_node"
+          }
+        ],
+        "inputs": [
+          {
+            "guid": "-400","typeName": "kafka_topic_and_schema"
+          }
+        ],
+        "outputs": [
+          {
+            "guid": "-500",
+            "typeName": "hbase_column_family"
+          }
+        ]
+      }
+    }
+
+  ],
+  "referredEntities": {
+    "-100": {
+      "guid": "-100",
+      "typeName": "server",
+      "attributes": {
+        "qualifiedName": "landing_zone_server_1@dev",
+        "uri": "landing_zone_server_1@dev",
+        "name": "landing_zone_server_1",
+        "dns_name": "pluto",
+        "ip_address": "10.71.68.93"
+      }
+    },
+    "-200": {
+      "guid": "-200",
+      "typeName": "storm_node",
+      "attributes": {
+        "qualifiedName": "storm-supervisor-1@dev",
+        "uri": "storm-supervisor-1@dev",
+        "name": "storm-supervisor-1",
+        "driverClass": "com.hashmapinc.labs.datagov.DemoTopologyDriver"
+      }
+    },
+    "-400": {
+      "guid": "-400",
+      "typeName": "kafka_topic_and_schema",
+      "attributes": {
+        "qualifiedName": "news_topic",
+        "uri": "news_topic",
+        "name": "news_topic",
+        "topic":"news_topic"
+      }
+    },
+    "-500": {
+      "guid": "-500",
+      "typeName": "hbase_column_family",
+      "attributes": {
+        "qualifiedName": "news:news_from_reuters.z",
+        "uri": "news:news_from_reuters.z",
+        "name": "z",
+        "table":{ "guid":-600 ,"typeName": "hbase_table"}
+      }
+    },
+    "-600": {
+      "guid": "-600",
+      "typeName": "hbase_table",
+      "attributes": {
+        "qualifiedName": "news:news_from_reuters",
+        "uri": "news:news_from_reuters",
+        "name": "news_from_reuters"
+      }
+    }
+
+  }
+}

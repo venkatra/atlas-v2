@@ -1,0 +1,172 @@
+{
+  "classificationDefs": [
+    {"category": "CLASSIFICATION", "name": "news", "description": "Used for classifying a news type of feed", "typeVersion": "1.0", "attributeDefs": [], "superTypes": [] } ,
+    {
+      "category": "CLASSIFICATION",
+      "name": "customer_PII",
+      "description": "Used for classifying a data which contains customer personal information, hence indicating confidential private",
+      "typeVersion": "1.0",
+      "attributeDefs": [],
+      "superTypes": []
+    },
+    {
+      "category": "CLASSIFICATION",
+      "name": "customer_NON_PII",
+      "description": "Used for classifying a data which contains customer non personal information, hence indicating confidential lesser than private",
+      "typeVersion": "1.0",
+      "attributeDefs": [],
+      "superTypes": []
+    },
+    {
+      "category": "CLASSIFICATION",
+      "name": "social",
+      "description": "Used for classifying a data which contains data obtained from social media like facebook, twitter",
+      "typeVersion": "1.0",
+      "attributeDefs": [],
+      "superTypes": []
+    }
+  ],
+  "structDefs": [
+    {
+      "category": "STRUCT",
+      "name": "schema_col",
+      "description": "column definition for schema",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name": "col",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "data_type",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "required",
+          "typeName": "boolean",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false
+        }
+      ]
+    }
+  ],
+  "entityDefs" : [
+
+    {
+      "superTypes" : [ "DataSet" ],
+      "category" : "ENTITY",
+      "name" : "DataFile",
+      "description" : "a type definition for a file which contains data, this could a file that needs to be processed or it can be an output (ex: extracts)",
+      "typeVersion" : "1.0",
+      "attributeDefs" : [
+        {
+          "name" : "file_name_pattern",
+          "typeName" : "string",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : true,
+          "isIndexable" : true
+        }
+       ,{
+          "name" : "directory",
+          "typeName" : "string",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : true,
+          "isIndexable" : true
+        }
+       ,{
+          "name" : "frequency",
+          "typeName" : "string",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+       ,{
+          "name" : "user",
+          "typeName" : "string",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+       ,{
+          "name" : "group",
+          "typeName" : "string",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+       ,{
+          "name" : "permission",
+          "typeName" : "string",
+          "isOptional" : true,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+      ,{
+          "name" : "format",
+          "typeName" : "string",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+      ,{
+          "name" : "server",
+          "typeName" : "server",
+          "isOptional" : false,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+       ,{
+          "name" : "schema",
+          "typeName" : "array<schema_col>",
+          "isOptional" : true,
+          "cardinality" : "SINGLE",
+          "valuesMinCount" : 1,
+          "valuesMaxCount" : 1,
+          "isUnique" : false,
+          "isIndexable" : false
+        }
+
+      ]
+    }
+  ]
+}

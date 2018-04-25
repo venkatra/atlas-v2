@@ -1,0 +1,30 @@
+{
+  "entities": [
+    {
+      "typeName": "server",
+      "createdBy": "datalake_infra",
+      "attributes": {
+        "qualifiedName": "landing_zone_server_1@dev",
+        "uri": "landing_zone_server_1@dev",
+        "name": "landing_zone_server_1",
+        "dns_name": "pluto",
+        "ip_address": "10.71.68.93"
+      },
+      "classifications": [
+        { "typeName": "landing_zone_incoming" },
+        { "typeName": "edge_node" }
+      ]
+    },
+
+    {
+      "typeName": "storm_node",
+      "createdBy": "datalake_infra",
+      "attributes": {
+        "qualifiedName": "storm-supervisor-1@dev",
+        "uri": "storm-supervisor-1@dev",
+        "name": "storm-supervisor-1",
+        "driverClass": "com.hashmapinc.labs.datagov.DemoTopologyDriver"
+      }
+    }
+  ]
+}
