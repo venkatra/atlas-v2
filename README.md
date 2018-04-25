@@ -1,4 +1,4 @@
-# WORK IN PROGRESS
+ # WORK IN PROGRESS
 
 # Apache Atlas v2 Rest API
 
@@ -47,37 +47,32 @@ From the apache doc: A ‘Type’ in Atlas is a definition of how a particular t
 
 From a developers view; a type is analogous to a class definition. Example
 
-Type : Kafka_topic |
------------------- |
-Attributes: |
-Broker |
-Topic name |
-Topic configuration |
-Key schema |
-Value schema |
+- Type : Kafka_topic :
+  *  Broker
+  *  Topic name
+  *  Topic configuration
+  *  Key schema
+  *  Value schema
 
-Type : Data_File |
------------------- |
-Attributes: |
-File name pattern |
-Directory |
-Server |
-Format |
-Data schema |
+
+- Type : Data_File
+  *  File name pattern
+  *  Directory
+  *  Server
+  *  Format
+  *  Data schema
 
 An entity is an instance of a Type, analogy is object from the oops world.
 
-Type : Kafka_topic : new_topic
+- Type : Kafka_topic : new_topic
+  * Broker => analytics_topics_broker
+  * Topic name => news_topic
 
-Attributes | |
------------ | |
-Broker | analytics_topics_broker |
-Topic name | news_topic |
-Topic configuration |
-Key schema | Id , String |
-Value schema | Id ,String |
-Url | String |
-Headline | String |
+- Topic configuration
+  * Key schema => Id , String 
+  * Value schema => Id ,String
+  * Url => String
+  * Headline => String
 
 Refer to the above concepts ![TypeSystem doc](https://atlas.apache.org/0.8.0-incubating/TypeSystem.html)
 
